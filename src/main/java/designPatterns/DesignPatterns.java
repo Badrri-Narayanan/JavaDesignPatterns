@@ -11,6 +11,11 @@ import designPatterns.behaviourPattern.visitorPattern.Computer;
 import designPatterns.behaviourPattern.visitorPattern.ComputerPart;
 import designPatterns.behaviourPattern.visitorPattern.ComputerPartDisplayVisitor;
 import designPatterns.creationalPattern.singletonPattern.SalaryAccount;
+import designPatterns.behaviourPattern.observerPattern.CompanyWebsite;
+import designPatterns.behaviourPattern.observerPattern.DevTeam;
+import designPatterns.behaviourPattern.observerPattern.Observer;
+import designPatterns.behaviourPattern.observerPattern.QaTeam;
+import designPatterns.behaviourPattern.observerPattern.WebsiteStatus;
 import designPatterns.behaviourPattern.statePattern.Package;
 
 public class DesignPatterns {
@@ -51,12 +56,37 @@ public class DesignPatterns {
 	
 	public static void statePattern() {
 		Package laptop = new Package();
-		System.out.println("Thanks for buying a new laptop for Lenovo");
+		System.out.println("Thanks for buying a new laptop from Lenovo");
 		laptop.printStatus();
 		laptop.nextState();
 		laptop.printStatus();
 		laptop.nextState();
 		laptop.printStatus();
 		laptop.nextState();
+	}
+	
+	public static void observerPattern() {
+		CompanyWebsite gartnerWebsite = new CompanyWebsite();
+		
+		Observer devTeam = new DevTeam();
+		Observer qaTeam = new QaTeam();
+		
+		gartnerWebsite.subscribe(devTeam);
+		gartnerWebsite.subscribe(qaTeam);
+		
+		System.out.println("WEBSITE STATE: Created new Website for Gartner and deploying the changes");
+		gartnerWebsite.setStatus(WebsiteStatus.DEPLOYMENT_IN_PROGRESS);
+		
+		System.out.println("\nWEBSITE STATE: Gartner website is now live");
+		gartnerWebsite.setStatus(WebsiteStatus.UP);
+		
+		System.err.println("\nWEBSITE STATE: Huge surge in number of user requests, unable to cope up. Server going down");
+		gartnerWebsite.setStatus(WebsiteStatus.DOWN);
+		
+		System.out.println("\nWEBSITE STATE: Fixing the issue and re-deploying changes");
+		gartnerWebsite.setStatus(WebsiteStatus.DEPLOYMENT_IN_PROGRESS);		
+		
+		System.out.println("WEBSITE STATE: The build was succussful");
+		gartnerWebsite.setStatus(WebsiteStatus.UP);
 	}
 }
