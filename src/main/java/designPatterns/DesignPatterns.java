@@ -1,5 +1,10 @@
 package designPatterns;
 
+import java.util.List;
+
+import designPatterns.behaviourPattern.observerPattern.Passenger;
+import designPatterns.behaviourPattern.observerPattern.Train;
+import designPatterns.behaviourPattern.statePattern.Package;
 import designPatterns.behaviourPattern.strategyPattern.AddOperation;
 import designPatterns.behaviourPattern.strategyPattern.Context;
 import designPatterns.behaviourPattern.strategyPattern.MultiplyOperation;
@@ -11,7 +16,6 @@ import designPatterns.behaviourPattern.visitorPattern.Computer;
 import designPatterns.behaviourPattern.visitorPattern.ComputerPart;
 import designPatterns.behaviourPattern.visitorPattern.ComputerPartDisplayVisitor;
 import designPatterns.creationalPattern.singletonPattern.SalaryAccount;
-import designPatterns.behaviourPattern.statePattern.Package;
 
 public class DesignPatterns {
 	public static void visitorPattern() {
@@ -58,5 +62,23 @@ public class DesignPatterns {
 		laptop.nextState();
 		laptop.printStatus();
 		laptop.nextState();
+	}
+	
+	public static void observerPattern() {
+		Passenger barryAllen = new Passenger("Barry Allen", "Korattur", "Chennai Central");
+		Passenger robertMartin = new Passenger("Robert Martin", "Avadi", "Basin bridge");
+		
+		Train pattabiramSuburban = new Train(List.of("Pattabiram", "Avadi", "Ambattur", "Korattur", "Perambur", "Basin bridge", "Chennai Central"));
+		
+		pattabiramSuburban.registerObserver(barryAllen);
+		pattabiramSuburban.registerObserver(robertMartin);
+		
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
 	}
 }
