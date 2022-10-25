@@ -2,6 +2,7 @@ package designPatterns;
 
 import java.util.List;
 
+import designPatterns.behaviourPattern.mementoPattern.Editor;
 import designPatterns.behaviourPattern.observerPattern.Passenger;
 import designPatterns.behaviourPattern.observerPattern.Train;
 import designPatterns.behaviourPattern.statePattern.Package;
@@ -80,5 +81,23 @@ public class DesignPatterns {
 		pattabiramSuburban.nextStation();
 		pattabiramSuburban.nextStation();
 		pattabiramSuburban.nextStation();
+	}
+	
+	public static void mementoPattern() {
+		Editor editor = new Editor();
+		editor.write("My name");
+		System.out.println(editor.getContent());
+		editor.write("My name is ");
+		System.out.println(editor.getContent());
+		editor.write("My name is Badrri");
+		System.out.println(editor.getContent());
+		editor.write("My name is Badrri Nara");
+		System.out.println(editor.getContent());
+		editor.undo();
+		System.out.println(editor.getContent());
+		editor.undo();
+		System.out.println(editor.getContent());
+		editor.undo();
+		System.out.println(editor.getContent());
 	}
 }
