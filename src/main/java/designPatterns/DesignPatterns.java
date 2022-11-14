@@ -1,5 +1,15 @@
 package designPatterns;
 
+import designPatterns.behaviourPattern.mediatorPattern.Button;
+import designPatterns.behaviourPattern.mediatorPattern.Fan;
+import designPatterns.behaviourPattern.mediatorPattern.Mediator;
+import designPatterns.behaviourPattern.mediatorPattern.PowerSupplier;
+import designPatterns.behaviourPattern.observerPattern.CompanyWebsite;
+import designPatterns.behaviourPattern.observerPattern.DevTeam;
+import designPatterns.behaviourPattern.observerPattern.Observer;
+import designPatterns.behaviourPattern.observerPattern.QaTeam;
+import designPatterns.behaviourPattern.observerPattern.WebsiteStatus;
+import designPatterns.behaviourPattern.statePattern.Package;
 import designPatterns.behaviourPattern.strategyPattern.AddOperation;
 import designPatterns.behaviourPattern.strategyPattern.Context;
 import designPatterns.behaviourPattern.strategyPattern.MultiplyOperation;
@@ -11,12 +21,6 @@ import designPatterns.behaviourPattern.visitorPattern.Computer;
 import designPatterns.behaviourPattern.visitorPattern.ComputerPart;
 import designPatterns.behaviourPattern.visitorPattern.ComputerPartDisplayVisitor;
 import designPatterns.creationalPattern.singletonPattern.SalaryAccount;
-import designPatterns.behaviourPattern.observerPattern.CompanyWebsite;
-import designPatterns.behaviourPattern.observerPattern.DevTeam;
-import designPatterns.behaviourPattern.observerPattern.Observer;
-import designPatterns.behaviourPattern.observerPattern.QaTeam;
-import designPatterns.behaviourPattern.observerPattern.WebsiteStatus;
-import designPatterns.behaviourPattern.statePattern.Package;
 
 public class DesignPatterns {
 	public static void visitorPattern() {
@@ -89,4 +93,18 @@ public class DesignPatterns {
 		System.out.println("WEBSITE STATE: The build was succussful");
 		gartnerWebsite.setStatus(WebsiteStatus.UP);
 	}
+	
+	public static void mediatorPattern() {
+		Button button = new Button();
+        Fan fan = new Fan();
+        PowerSupplier powerSupplier = new PowerSupplier();
+        
+        Mediator mediator = new Mediator(button, fan, powerSupplier);
+        
+        button.setMediator(mediator);
+        fan.setMediator(mediator);
+        
+        button.press();
+        button.press();
+}
 }
