@@ -2,6 +2,8 @@ package designPatterns;
 
 import java.util.List;
 
+import designPatterns.behaviourPattern.iteratorPattern.Iterator;
+import designPatterns.behaviourPattern.iteratorPattern.LinkedList;
 import designPatterns.behaviourPattern.mediatorPattern.Button;
 import designPatterns.behaviourPattern.mediatorPattern.Fan;
 import designPatterns.behaviourPattern.mediatorPattern.Mediator;
@@ -129,4 +131,26 @@ public class DesignPatterns {
         button.press();
         button.press();
   }
+	
+	public static void iteratorPattern() {
+		LinkedList<String> list = new LinkedList<>();
+		
+		list.add("India");
+		list.add("Brazil");
+		list.add("South Korea");
+		
+		Iterator<String> it1 = list.getIterator();
+		
+		while(it1.hasNext()) {
+			System.out.println(it1.next());
+		}
+		
+		list.pop();
+		
+		Iterator<String> it2 = list.getIterator();
+		
+		while(it2.hasNext()) {
+			System.out.println(it2.next());
+		}
+	}
 }
