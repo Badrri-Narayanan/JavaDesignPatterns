@@ -2,6 +2,12 @@ package designPatterns;
 
 import java.util.List;
 
+import designPatterns.behaviourPattern.commandPattern.CommandPatternButton;
+import designPatterns.behaviourPattern.commandPattern.Document;
+import designPatterns.behaviourPattern.commandPattern.PrintCommand;
+import designPatterns.behaviourPattern.commandPattern.SaveCommand;
+import designPatterns.behaviourPattern.interpretorPattern.Expression;
+import designPatterns.behaviourPattern.interpretorPattern.FirstLetterNotUnderscore;
 import designPatterns.behaviourPattern.iteratorPattern.Iterator;
 import designPatterns.behaviourPattern.iteratorPattern.LinkedList;
 import designPatterns.behaviourPattern.mediatorPattern.Button;
@@ -152,5 +158,24 @@ public class DesignPatterns {
 		while(it2.hasNext()) {
 			System.out.println(it2.next());
 		}
+	}
+	
+	public static void interpreterPattern() {
+		String context = "_Int";
+		Expression firstLetterNotUnderscore = new FirstLetterNotUnderscore();
+		
+		String result = firstLetterNotUnderscore.interpret(context);
+		
+		System.out.println(result);
+	}
+	
+	public static void commandPattern() {
+		CommandPatternButton saveButton = new CommandPatternButton("Save");
+		CommandPatternButton printButton = new CommandPatternButton("Print");
+		
+		Document resume = new Document();
+		
+		saveButton.click(new SaveCommand(resume));
+		printButton.click(new PrintCommand(resume));
 	}
 }
