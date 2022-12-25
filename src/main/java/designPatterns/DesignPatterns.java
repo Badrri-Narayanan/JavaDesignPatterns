@@ -9,9 +9,10 @@ import designPatterns.behaviourPattern.mediatorPattern.PowerSupplier;
 import designPatterns.behaviourPattern.observerPattern.CompanyWebsite;
 import designPatterns.behaviourPattern.observerPattern.DevTeam;
 import designPatterns.behaviourPattern.observerPattern.Observer;
+import designPatterns.behaviourPattern.observerPattern.Passenger;
 import designPatterns.behaviourPattern.observerPattern.QaTeam;
+import designPatterns.behaviourPattern.observerPattern.Train;
 import designPatterns.behaviourPattern.observerPattern.WebsiteStatus;
-
 import designPatterns.behaviourPattern.statePattern.Package;
 import designPatterns.behaviourPattern.strategyPattern.AddOperation;
 import designPatterns.behaviourPattern.strategyPattern.Context;
