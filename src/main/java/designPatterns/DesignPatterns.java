@@ -1,5 +1,7 @@
 package designPatterns;
 
+import java.util.List;
+
 import designPatterns.behaviourPattern.mediatorPattern.Button;
 import designPatterns.behaviourPattern.mediatorPattern.Fan;
 import designPatterns.behaviourPattern.mediatorPattern.Mediator;
@@ -9,6 +11,7 @@ import designPatterns.behaviourPattern.observerPattern.DevTeam;
 import designPatterns.behaviourPattern.observerPattern.Observer;
 import designPatterns.behaviourPattern.observerPattern.QaTeam;
 import designPatterns.behaviourPattern.observerPattern.WebsiteStatus;
+
 import designPatterns.behaviourPattern.statePattern.Package;
 import designPatterns.behaviourPattern.strategyPattern.AddOperation;
 import designPatterns.behaviourPattern.strategyPattern.Context;
@@ -70,6 +73,24 @@ public class DesignPatterns {
 	}
 	
 	public static void observerPattern() {
+		Passenger barryAllen = new Passenger("Barry Allen", "Korattur", "Chennai Central");
+		Passenger robertMartin = new Passenger("Robert Martin", "Avadi", "Basin bridge");
+		
+		Train pattabiramSuburban = new Train(List.of("Pattabiram", "Avadi", "Ambattur", "Korattur", "Perambur", "Basin bridge", "Chennai Central"));
+		
+		pattabiramSuburban.registerObserver(barryAllen);
+		pattabiramSuburban.registerObserver(robertMartin);
+		
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+		pattabiramSuburban.nextStation();
+	}
+	
+	public static void mementoPattern() {
 		CompanyWebsite gartnerWebsite = new CompanyWebsite();
 		
 		Observer devTeam = new DevTeam();
@@ -106,5 +127,5 @@ public class DesignPatterns {
         
         button.press();
         button.press();
-}
+  }
 }
