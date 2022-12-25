@@ -2,6 +2,10 @@ package designPatterns;
 
 import java.util.List;
 
+import designPatterns.behaviourPattern.chainOfResponsiblityPattern.DocumentHandler;
+import designPatterns.behaviourPattern.chainOfResponsiblityPattern.SlideshowDocumentHandler;
+import designPatterns.behaviourPattern.chainOfResponsiblityPattern.SpreadsheetDocumentHandler;
+import designPatterns.behaviourPattern.chainOfResponsiblityPattern.TextDocumentHandler;
 import designPatterns.behaviourPattern.commandPattern.CommandPatternButton;
 import designPatterns.behaviourPattern.commandPattern.Document;
 import designPatterns.behaviourPattern.commandPattern.PrintCommand;
@@ -177,5 +181,12 @@ public class DesignPatterns {
 		
 		saveButton.click(new SaveCommand(resume));
 		printButton.click(new PrintCommand(resume));
+	}
+	
+	public static void chainOfResponsibilityPattern() {
+		DocumentHandler documentHandler = new SlideshowDocumentHandler(new SpreadsheetDocumentHandler(new TextDocumentHandler(null)));
+		
+		String documentName = "sample.xlsx";
+		documentHandler.openDocument(documentName.split("\\.")[1]);
 	}
 }
